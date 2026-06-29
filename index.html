@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tea Stories</title>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#fff;
+    color:#111;
+}
+
+/* =====================
+   MENU
+===================== */
+
+.nav{
+    position:fixed;
+    top:55px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:28px;
+    z-index:10;
+}
+
+.item{
+    width:190px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.nav button{
+    width:190px;
+    height:190px;
+    border:none;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.nav img{
+    width:70%;
+    height:70%;
+    object-fit:contain;
+    filter:brightness(0);
+}
+
+.tea{ background:#EF6634; }
+.wood{ background:#DDE42C; }
+.instruments{ background:#7A78FF; }
+.music{ background:#00D94A; }
+
+.item.active button::after{
+    content:"";
+    position:absolute;
+    bottom:-18px;
+    left:50%;
+    transform:translateX(-50%);
+    width:0;
+    height:0;
+    border-left:18px solid transparent;
+    border-right:18px solid transparent;
+    border-top:18px solid currentColor;
+}
+
+.item:nth-child(1).active button::after{ border-top-color:#EF6634; }
+.item:nth-child(2).active button::after{ border-top-color:#DDE42C; }
+.item:nth-child(3).active button::after{ border-top-color:#7A78FF; }
+.item:nth-child(4).active button::after{ border-top-color:#00D94A; }
+
+/* =====================
+ TITLES
+===================== */
+
+.title{
+    display:block;
+    margin-top:18px;
+    width:190px;
+    font-family:"Montserrat",sans-serif;
+    font-weight:800;
+    font-size:25px;
+    line-height:.95;
+    text-transform:none;
+    letter-spacing:-0.01em;
+    color:#111;
+
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity .25s ease, transform .25s ease;
+    pointer-events:none;
+}
+
+.item.active .title{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+}
+
+/* =====================
+ CONTENT
+===================== */
+
+.content{
+    position:absolute;
+    top:430px;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+}
+
+.card{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    opacity:0;
+    transform-origin:top center;
+    pointer-events:none;
+}
+
+.card p{
+    font-family:"Inter",sans-serif;
+    font-weight:500;
+    font-size:30px;
+    line-height:1.45;
+    max-width:900px;
+
+    letter-spacing:-0.01em;
+    padding-left:100px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="nav">
+
+    <div class="item">
+        <button class="tea">
+            <img src="images/tea.svg">
+        </button>
+        <div class="title">Пьём чай</div>
+    </div>
+
+    <div class="item">
+        <button class="wood">
+            <img src="images/wood.svg">
+        </button>
+        <div class="title">Делаем классные деревяшки</div>
+    </div>
+
+    <div class="item">
+        <button class="instruments">
+            <img src="images/instruments.svg">
+        </button>
+        <div class="title">Строим музыкальные инструменты</div>
+    </div>
+
+    <div class="item">
+        <button class="music">
+            <img src="images/music.svg">
+        </button>
+        <div class="title">Играем музыку</div>
+    </div>
+
+</div>
+
+<div class="content">
+
+    <div class="card">
+        <p>
+        Пауза — настройка слуха.<br>
+        Завариваем, разливаем, молчим.<br>
+        Слушаем воду, стук пиал, дыхание залива.<br>
+        Чаем занимается Хранитель пауз.<br>
+        Посуда — ручная работа, можно заполучить.
+        </p>
+    </div>
+
+    <div class="card">
+        <p>
+        Чайные принадлежности и другая красота из дерева разных пород.<br>
+        Масло вместо лака.<br>
+        Слышишь? — это дерево дышит.
+        </p>
+    </div>
+
+    <div class="card">
+        <p>
+        Гравитон — гравитационный аккорд.
+        Гул планетарного масштаба.<br>
+        Кахон Фибоначчи — перкуссионный ящик
+        в золотой пропорции.
+        Сухой глубокий бас.<br>
+        Монохорд — одна струна, сто смыслов.
+        Медитация в дереве и звуке.
+        </p>
+    </div>
+
+    <div class="card">
+        <p>
+        Каждая встреча заканчивается общей игрой.<br>
+        Без нот, без правил.<br>
+        Кто-то задаёт ритм на кахоне,
+        кто-то ласкает монохорд,
+        кто-то просто сидит.<br>
+        Записываем фрагмент —
+        он уходит в закрытый чат
+        «заварили-запилили».
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+const items = document.querySelectorAll(".item");
+const cards = document.querySelectorAll(".card");
+
+let active = null;
+
+items.forEach((item,index)=>{
+
+    item.addEventListener("mouseenter",()=>{
+
+        if(active===index) return;
+        active=index;
+
+        items.forEach(i=>{
+            i.classList.remove("active");
+        });
+
+        item.classList.add("active");
+
+        cards.forEach((card,i)=>{
+
+            if(i===index){
+
+                gsap.fromTo(card,
+                {
+                    opacity:0,
+                    scale:.95,
+                    y:-40
+                },
+                {
+                    opacity:1,
+                    scale:1,
+                    y:0,
+                    duration:.45,
+                    ease:"power3.out",
+                    pointerEvents:"auto"
+                });
+
+            } else {
+
+                gsap.to(card,{
+                    opacity:0,
+                    scale:.95,
+                    duration:.25,
+                    pointerEvents:"none"
+                });
+
+            }
+
+        });
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
