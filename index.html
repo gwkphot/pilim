@@ -20,8 +20,7 @@
     box-sizing:border-box;
 }
 
-html,
-body{
+html, body{
     width:100%;
     height:100%;
     overflow:hidden;
@@ -30,7 +29,7 @@ body{
 }
 
 /* =====================
-   MENU
+   NAV
 ===================== */
 
 .nav{
@@ -73,28 +72,6 @@ body{
 .instruments{ background:#7A78FF; }
 .music{ background:#00D94A; }
 
-.item.active button::after{
-    content:"";
-    position:absolute;
-    bottom:-18px;
-    left:50%;
-    transform:translateX(-50%);
-    width:0;
-    height:0;
-    border-left:18px solid transparent;
-    border-right:18px solid transparent;
-    border-top:18px solid currentColor;
-}
-
-.item:nth-child(1).active button::after{ border-top-color:#EF6634; }
-.item:nth-child(2).active button::after{ border-top-color:#DDE42C; }
-.item:nth-child(3).active button::after{ border-top-color:#7A78FF; }
-.item:nth-child(4).active button::after{ border-top-color:#00D94A; }
-
-/* =====================
- TITLES
-===================== */
-
 .title{
     display:block;
     margin-top:18px;
@@ -103,23 +80,20 @@ body{
     font-weight:800;
     font-size:25px;
     line-height:.95;
-    letter-spacing:-0.01em;
     color:#111;
 
     opacity:0;
     transform:translateY(10px);
-    transition:opacity .25s ease, transform .25s ease;
-    pointer-events:none;
+    transition:.25s;
 }
 
 .item.active .title{
     opacity:1;
     transform:translateY(0);
-    pointer-events:auto;
 }
 
 /* =====================
- CONTENT
+   CONTENT (DESKTOP)
 ===================== */
 
 .content{
@@ -140,11 +114,9 @@ body{
 
 .card p{
     font-family:"Inter",sans-serif;
-    font-weight:500;
     font-size:30px;
     line-height:1.45;
     max-width:900px;
-    letter-spacing:-0.01em;
     padding-left:100px;
 }
 
@@ -152,12 +124,7 @@ body{
    TABLET
 ===================== */
 
-@media (max-width: 1024px) {
-
-    .nav{
-        top:30px;
-        gap:18px;
-    }
+@media (max-width: 1024px){
 
     .nav button,
     .item{
@@ -173,22 +140,21 @@ body{
         font-size:20px;
     }
 
-    .content{
-        top:360px;
-    }
-
     .card p{
         font-size:24px;
         padding-left:60px;
-        max-width:700px;
+    }
+
+    .content{
+        top:360px;
     }
 }
 
 /* =====================
-   PHONE
+   PHONE FIX (главное)
 ===================== */
 
-@media (max-width: 768px) {
+@media (max-width: 768px){
 
     html, body{
         overflow:auto;
@@ -199,14 +165,8 @@ body{
         top:20px;
         left:20px;
         transform:none;
-
         flex-direction:column;
         gap:16px;
-        align-items:flex-start;
-    }
-
-    .item{
-        width:auto;
     }
 
     .nav button{
@@ -214,22 +174,12 @@ body{
         height:70px;
     }
 
-    .nav img{
-        width:60%;
-        height:60%;
-    }
-
     .title{
-        width:auto;
-        font-size:16px;
-        margin-top:8px;
         opacity:1;
         transform:none;
-        pointer-events:auto;
-    }
-
-    .item.active button::after{
-        display:none;
+        font-size:16px;
+        margin-top:8px;
+        width:auto;
     }
 
     .content{
@@ -245,6 +195,14 @@ body{
         position:relative;
         left:auto;
         transform:none;
+        opacity:0;
+        pointer-events:none;
+        transition:opacity .3s ease;
+    }
+
+    .card.active{
+        opacity:1;
+        pointer-events:auto;
     }
 
     .card p{
@@ -263,30 +221,22 @@ body{
 <div class="nav">
 
     <div class="item">
-        <button class="tea">
-            <img src="images/tea.svg">
-        </button>
+        <button class="tea"><img src="images/tea.svg"></button>
         <div class="title">Пьём чай</div>
     </div>
 
     <div class="item">
-        <button class="wood">
-            <img src="images/wood.svg">
-        </button>
+        <button class="wood"><img src="images/wood.svg"></button>
         <div class="title">Делаем классные деревяшки</div>
     </div>
 
     <div class="item">
-        <button class="instruments">
-            <img src="images/instruments.svg">
-        </button>
+        <button class="instruments"><img src="images/instruments.svg"></button>
         <div class="title">Строим музыкальные инструменты</div>
     </div>
 
     <div class="item">
-        <button class="music">
-            <img src="images/music.svg">
-        </button>
+        <button class="music"><img src="images/music.svg"></button>
         <div class="title">Играем музыку</div>
     </div>
 
@@ -294,47 +244,10 @@ body{
 
 <div class="content">
 
-    <div class="card">
-        <p>
-        Пауза — настройка слуха.<br>
-        Завариваем, разливаем, молчим.<br>
-        Слушаем воду, стук пиал, дыхание залива.<br>
-        Чаем занимается Хранитель пауз.<br>
-        Посуда — ручная работа, можно заполучить.
-        </p>
-    </div>
-
-    <div class="card">
-        <p>
-        Чайные принадлежности и другая красота из дерева разных пород.<br>
-        Масло вместо лака.<br>
-        Слышишь? — это дерево дышит.
-        </p>
-    </div>
-
-    <div class="card">
-        <p>
-        Гравитон — гравитационный аккорд.
-        Гул планетарного масштаба.<br>
-        Кахон Фибоначчи — перкуссионный ящик
-        в золотой пропорции.<br>
-        Сухой глубокий бас.<br>
-        Монохорд — одна струна, сто смыслов.
-        Медитация в дереве и звуке.
-        </p>
-    </div>
-
-    <div class="card">
-        <p>
-        Каждая встреча заканчивается общей игрой.<br>
-        Без нот, без правил.<br>
-        Кто-то задаёт ритм на кахоне,
-        кто-то ласкает монохорд,
-        кто-то просто сидит.<br>
-        Записываем фрагмент — он уходит в закрытый чат
-        «заварили-запилили».
-        </p>
-    </div>
+    <div class="card"><p>Пауза — настройка слуха...</p></div>
+    <div class="card"><p>Дерево дышит...</p></div>
+    <div class="card"><p>Гравитон и звук...</p></div>
+    <div class="card"><p>Общая музыка...</p></div>
 
 </div>
 
@@ -345,40 +258,48 @@ const cards = document.querySelectorAll(".card");
 
 let active = null;
 
+function setActive(index){
+
+    items.forEach(i=>i.classList.remove("active"));
+    items[index].classList.add("active");
+
+    cards.forEach((card,i)=>{
+
+        if(i===index){
+
+            gsap.to(card,{
+                opacity:1,
+                duration:.4,
+                pointerEvents:"auto"
+            });
+
+            card.classList.add("active");
+
+        } else {
+
+            gsap.to(card,{
+                opacity:0,
+                duration:.25,
+                pointerEvents:"none"
+            });
+
+            card.classList.remove("active");
+        }
+    });
+}
+
 items.forEach((item,index)=>{
-
     item.addEventListener("mouseenter",()=>{
-
-        if(active===index) return;
-        active=index;
-
-        items.forEach(i=>i.classList.remove("active"));
-        item.classList.add("active");
-
-        cards.forEach((card,i)=>{
-
-            if(i===index){
-
-                gsap.fromTo(card,
-                {opacity:0, scale:.95, y:-40},
-                {opacity:1, scale:1, y:0, duration:.45, ease:"power3.out", pointerEvents:"auto"});
-
-            } else {
-
-                gsap.to(card,{
-                    opacity:0,
-                    scale:.95,
-                    duration:.25,
-                    pointerEvents:"none"
-                });
-
-            }
-
-        });
-
+        if(window.innerWidth <= 768) return;
+        setActive(index);
     });
 
+    item.addEventListener("click",()=>{
+        setActive(index);
+    });
 });
+
+setActive(0);
 
 </script>
 
