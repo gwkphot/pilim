@@ -85,15 +85,17 @@ html, body{
     opacity:0;
     transform:translateY(10px);
     transition:.25s;
+    pointer-events:none;
 }
 
 .item.active .title{
     opacity:1;
     transform:translateY(0);
+    pointer-events:auto;
 }
 
 /* =====================
-   CONTENT (DESKTOP)
+   CONTENT DESKTOP
 ===================== */
 
 .content{
@@ -140,18 +142,18 @@ html, body{
         font-size:20px;
     }
 
+    .content{
+        top:360px;
+    }
+
     .card p{
         font-size:24px;
         padding-left:60px;
     }
-
-    .content{
-        top:360px;
-    }
 }
 
 /* =====================
-   PHONE FIX (главное)
+   PHONE FIX (ВАЖНО)
 ===================== */
 
 @media (max-width: 768px){
@@ -174,12 +176,9 @@ html, body{
         height:70px;
     }
 
+    /* ❗ ВАЖНО: заголовки скрыты ВСЕГДА на мобиле */
     .title{
-        opacity:1;
-        transform:none;
-        font-size:16px;
-        margin-top:8px;
-        width:auto;
+        display:none;
     }
 
     .content{
@@ -187,8 +186,8 @@ html, body{
         top:auto;
         left:auto;
         transform:none;
-        margin-top:220px;
-        padding:0 20px;
+        margin-top:20px;
+        padding-left:110px; /* место под кнопки */
     }
 
     .card{
@@ -197,7 +196,6 @@ html, body{
         transform:none;
         opacity:0;
         pointer-events:none;
-        transition:opacity .3s ease;
     }
 
     .card.active{
@@ -206,7 +204,8 @@ html, body{
     }
 
     .card p{
-        font-size:18px;
+        font-size:14px;   /* уменьшили чтобы влезало напротив кнопки */
+        line-height:1.35;
         padding-left:0;
         max-width:100%;
     }
@@ -244,10 +243,43 @@ html, body{
 
 <div class="content">
 
-    <div class="card"><p>Пауза — настройка слуха...</p></div>
-    <div class="card"><p>Дерево дышит...</p></div>
-    <div class="card"><p>Гравитон и звук...</p></div>
-    <div class="card"><p>Общая музыка...</p></div>
+    <div class="card">
+        <p>
+        Пауза — настройка слуха.<br>
+        Завариваем, разливаем, молчим.<br>
+        Слушаем воду, стук пиал, дыхание залива.<br>
+        Чаем занимается Хранитель пауз.<br>
+        Посуда — ручная работа, можно заполучить.
+        </p>
+    </div>
+
+    <div class="card">
+        <p>
+        Чайные принадлежности и другая красота из дерева разных пород.<br>
+        Масло вместо лака.<br>
+        Слышишь? — это дерево дышит.
+        </p>
+    </div>
+
+    <div class="card">
+        <p>
+        Гравитон — гравитационный аккорд.<br>
+        Гул планетарного масштаба.<br>
+        Кахон Фибоначчи — перкуссионный ящик<br>
+        в золотой пропорции.<br>
+        Сухой глубокий бас.<br>
+        Монохорд — одна струна, сто смыслов.
+        </p>
+    </div>
+
+    <div class="card">
+        <p>
+        Каждая встреча заканчивается общей игрой.<br>
+        Без нот, без правил.<br>
+        Кто-то задаёт ритм, кто-то играет, кто-то просто сидит.<br>
+        Запись уходит в закрытый чат.
+        </p>
+    </div>
 
 </div>
 
@@ -255,8 +287,6 @@ html, body{
 
 const items = document.querySelectorAll(".item");
 const cards = document.querySelectorAll(".card");
-
-let active = null;
 
 function setActive(index){
 
@@ -266,29 +296,26 @@ function setActive(index){
     cards.forEach((card,i)=>{
 
         if(i===index){
-
             gsap.to(card,{
                 opacity:1,
                 duration:.4,
                 pointerEvents:"auto"
             });
-
             card.classList.add("active");
-
         } else {
-
             gsap.to(card,{
                 opacity:0,
                 duration:.25,
                 pointerEvents:"none"
             });
-
             card.classList.remove("active");
         }
+
     });
 }
 
 items.forEach((item,index)=>{
+
     item.addEventListener("mouseenter",()=>{
         if(window.innerWidth <= 768) return;
         setActive(index);
@@ -297,6 +324,7 @@ items.forEach((item,index)=>{
     item.addEventListener("click",()=>{
         setActive(index);
     });
+
 });
 
 setActive(0);
