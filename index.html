@@ -30,7 +30,7 @@ font-family:Inter,sans-serif;
 }
 
 /* ======================
-DESKTOP LAYOUT
+DESKTOP
 ====================== */
 
 .wrapper{
@@ -45,18 +45,14 @@ flex:1;
 height:100vh;
 
 position:relative;
-
 cursor:pointer;
-
 overflow:hidden;
 
 display:flex;
+flex-direction:column;
 
 align-items:flex-start;
-
 justify-content:flex-start;
-
-flex-direction:column;
 
 padding:60px 50px;
 
@@ -75,7 +71,7 @@ flex:3;
 }
 
 /* ======================
-ICON
+ICON (единая линия сверху)
 ====================== */
 
 .icon{
@@ -83,12 +79,18 @@ width:90px;
 height:90px;
 filter:brightness(0);
 margin-bottom:25px;
-transform:translateY(10px);
-transition:.6s ease;
+flex-shrink:0;
 }
 
-.card.active .icon{
-transform:translateY(0);
+/* ======================
+CENTER CONTENT BLOCK
+====================== */
+
+.content{
+display:flex;
+flex-direction:column;
+justify-content:center;
+height:calc(100% - 140px);
 }
 
 /* ======================
@@ -100,12 +102,12 @@ h2{
 font-family:"Montserrat";
 font-size:30px;
 font-weight:800;
-line-height:1.05;
 
+line-height:1.05;
 margin-bottom:20px;
 
 opacity:0;
-transform:translateY(15px);
+transform:translateY(20px);
 transition:.45s ease;
 
 text-align:left;
@@ -128,6 +130,7 @@ line-height:1.5;
 
 opacity:0;
 transform:translateY(20px);
+
 transition:.55s ease;
 
 max-width:700px;
@@ -151,56 +154,51 @@ html,body{
 overflow:auto;
 }
 
-/* из строки в колонку */
-
 .wrapper{
 flex-direction:column;
 height:auto;
 }
 
-/* карточки становятся блоками */
-
 .card{
 
 flex:none;
-
 height:120px;
 
 padding:20px;
 
 border-right:none;
-
 border-bottom:1px solid #111;
+
+align-items:flex-start;
+justify-content:flex-start;
 
 transition:height .7s cubic-bezier(.2,.8,.2,1);
 
 }
 
-/* раскрытие */
-
 .card.active{
 height:420px;
 }
-
-/* иконка меньше */
 
 .icon{
 width:50px;
 height:50px;
 margin-bottom:10px;
-transform:none;
 }
 
-/* заголовок всегда видим, но компактный */
+.content{
+height:auto;
+}
 
 h2{
 font-size:18px;
-opacity:1;
-transform:none;
+opacity:0;
 margin-bottom:10px;
 }
 
-/* текст аккуратнее */
+.card.active h2{
+opacity:1;
+}
 
 .text{
 font-size:14px;
@@ -227,6 +225,8 @@ opacity:1;
 
 <img class="icon" src="images/tea.svg">
 
+<div class="content">
+
 <h2>Пьём чай</h2>
 
 <div class="text">
@@ -239,11 +239,15 @@ opacity:1;
 
 </div>
 
+</div>
+
 
 
 <div class="card">
 
 <img class="icon" src="images/wood.svg">
+
+<div class="content">
 
 <h2>Делаем классные деревяшки</h2>
 
@@ -255,11 +259,15 @@ opacity:1;
 
 </div>
 
+</div>
+
 
 
 <div class="card">
 
 <img class="icon" src="images/instruments.svg">
+
+<div class="content">
 
 <h2>Строим музыкальные инструменты</h2>
 
@@ -273,11 +281,15 @@ opacity:1;
 
 </div>
 
+</div>
+
 
 
 <div class="card">
 
 <img class="icon" src="images/music.svg">
+
+<div class="content">
 
 <h2>Играем музыку</h2>
 
@@ -286,6 +298,8 @@ opacity:1;
 Без нот, без правил.<br>
 Кто-то задаёт ритм, кто-то играет, кто-то просто сидит.<br>
 Запись уходит в закрытый чат «заварили-запилили».
+</div>
+
 </div>
 
 </div>
