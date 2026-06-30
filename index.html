@@ -10,556 +10,322 @@
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Montserrat:wght@800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
-
 
 html,body{
-
-    width:100%;
-    height:100%;
-
-    overflow:hidden;
-
-    font-family:Inter,sans-serif;
-
+width:100%;
+height:100%;
+overflow:hidden;
+background:#fff;
+color:#111;
+font-family:Inter,sans-serif;
 }
 
-
-
 /* ======================
-LAYOUT
+DESKTOP LAYOUT
 ====================== */
-
 
 .wrapper{
-
-    width:100%;
-    height:100vh;
-
-    display:flex;
-
+display:flex;
+width:100%;
+height:100vh;
 }
-
-
-
-/* ======================
-CARDS
-====================== */
-
 
 .card{
 
+flex:1;
+height:100vh;
 
-    flex:1;
+position:relative;
 
-    height:100vh;
+cursor:pointer;
 
-    position:relative;
+overflow:hidden;
 
-    display:flex;
+display:flex;
 
-    flex-direction:column;
+align-items:flex-start;
 
-    justify-content:center;
+justify-content:flex-start;
 
-    align-items:center;
+flex-direction:column;
 
+padding:60px 50px;
 
-    cursor:pointer;
+border-right:1px solid #111;
 
-    overflow:hidden;
-
-
-    transition:flex .5s ease;
-
-
-}
-
-
-
-.card:hover{
-
-    flex:1.6;
+transition:flex .9s cubic-bezier(.2,.8,.2,1);
 
 }
 
-
-
-
-
-.card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:rgba(255,255,255,.0);
-
-    transition:.4s;
-
+.card:last-child{
+border-right:none;
 }
 
-
-
-.card:hover::before{
-
-    background:rgba(255,255,255,.12);
-
+.card.active{
+flex:3;
 }
-
-
-
-/* COLORS */
-
-
-.tea{
-    background:#EF6634;
-}
-
-.wood{
-    background:#DDE42C;
-}
-
-.instrument{
-    background:#7A78FF;
-}
-
-.music{
-    background:#00D94A;
-}
-
-
 
 /* ======================
 ICON
 ====================== */
 
-
 .icon{
-
-    width:130px;
-
-    height:130px;
-
-
-    object-fit:contain;
-
-
-    filter:brightness(0);
-
-
-    position:relative;
-
-    z-index:2;
-
-
+width:90px;
+height:90px;
+filter:brightness(0);
+margin-bottom:25px;
+transform:translateY(10px);
+transition:.6s ease;
 }
 
-
+.card.active .icon{
+transform:translateY(0);
+}
 
 /* ======================
 TITLE
 ====================== */
 
-
 h2{
 
+font-family:"Montserrat";
+font-size:30px;
+font-weight:800;
+line-height:1.05;
 
-    margin-top:30px;
+margin-bottom:20px;
 
+opacity:0;
+transform:translateY(15px);
+transition:.45s ease;
 
-    font-family:"Montserrat";
-
-    font-size:32px;
-
-    line-height:.95;
-
-
-    opacity:0;
-
-
-    transform:translateY(20px);
-
-
-    transition:.35s;
-
-
-    position:relative;
-
-    z-index:2;
-
+text-align:left;
 
 }
 
-
-.card:hover h2{
-
-    opacity:1;
-
-    transform:none;
-
+.card.active h2{
+opacity:1;
+transform:translateY(0);
 }
-
-
-
-
 
 /* ======================
 TEXT
 ====================== */
 
-
 .text{
 
+font-size:18px;
+line-height:1.5;
 
-    position:absolute;
+opacity:0;
+transform:translateY(20px);
+transition:.55s ease;
 
+max-width:700px;
 
-    bottom:60px;
-
-
-    left:40px;
-
-    right:40px;
-
-
-
-    font-size:22px;
-
-    line-height:1.4;
-
-
-
-    opacity:0;
-
-
-    transform:translateY(30px);
-
-
-
-    transition:.4s;
-
-
+text-align:left;
 
 }
 
-
-
-.card:hover .text{
-
-
-    opacity:1;
-
-
-    transform:none;
-
-
+.card.active .text{
+opacity:1;
+transform:translateY(0);
 }
-
-
-
-
-
-
 
 /* ======================
 MOBILE
 ====================== */
 
-
 @media(max-width:768px){
 
-
 html,body{
-
-    overflow:auto;
-
+overflow:auto;
 }
 
-
+/* из строки в колонку */
 
 .wrapper{
-
-
-    flex-direction:column;
-
-
-    height:auto;
-
-
+flex-direction:column;
+height:auto;
 }
 
-
+/* карточки становятся блоками */
 
 .card{
 
+flex:none;
 
-    flex:none;
+height:120px;
 
+padding:20px;
 
-    width:100%;
+border-right:none;
 
+border-bottom:1px solid #111;
 
-    height:120px;
-
-
-
-    transition:height .45s ease;
-
+transition:height .7s cubic-bezier(.2,.8,.2,1);
 
 }
 
+/* раскрытие */
 
-
-
-
-.card.open{
-
-
-    height:380px;
-
-
+.card.active{
+height:420px;
 }
 
-
-
+/* иконка меньше */
 
 .icon{
-
-
-    width:55px;
-
-    height:55px;
-
-
+width:50px;
+height:50px;
+margin-bottom:10px;
+transform:none;
 }
 
-
-
-.card{
-
-    flex-direction:row;
-
-    justify-content:flex-start;
-
-    padding-left:25px;
-
-
-}
-
-
+/* заголовок всегда видим, но компактный */
 
 h2{
-
-
-    margin:0 0 0 20px;
-
-
-    font-size:20px;
-
-
-    opacity:1;
-
-
-    transform:none;
-
-
+font-size:18px;
+opacity:1;
+transform:none;
+margin-bottom:10px;
 }
 
-
+/* текст аккуратнее */
 
 .text{
-
-
-    left:25px;
-
-    right:25px;
-
-    bottom:30px;
-
-
-    font-size:16px;
-
-
-    opacity:0;
-
-
+font-size:14px;
+max-width:100%;
+opacity:0;
+transform:none;
 }
 
-
-
-.card.open .text{
-
-
-    opacity:1;
-
-
+.card.active .text{
+opacity:1;
 }
-
-
-
-
 
 }
 
 </style>
 
-
 </head>
-
-
 
 <body>
 
-
-
 <div class="wrapper">
 
-
-
-<div class="card tea">
+<div class="card">
 
 <img class="icon" src="images/tea.svg">
 
 <h2>Пьём чай</h2>
 
 <div class="text">
-
 Пауза — настройка слуха.<br>
 Завариваем, разливаем, молчим.<br>
 Слушаем воду, стук пиал, дыхание залива.<br>
 Чаем занимается Хранитель пауз.<br>
 Посуда — ручная работа, можно заполучить.
-
 </div>
 
 </div>
 
 
 
-
-<div class="card wood">
+<div class="card">
 
 <img class="icon" src="images/wood.svg">
 
 <h2>Делаем классные деревяшки</h2>
 
 <div class="text">
-
 Чайные принадлежности и другая красота из дерева разных пород.<br>
 Масло вместо лака.<br>
 Слышишь? — это дерево дышит.
-
 </div>
 
 </div>
 
 
 
-
-<div class="card instrument">
+<div class="card">
 
 <img class="icon" src="images/instruments.svg">
 
 <h2>Строим музыкальные инструменты</h2>
 
 <div class="text">
-
 Гравитон — гравитационный аккорд.<br>
 Гул планетарного масштаба.<br>
-Кахон Фибоначчи — перкуссионный ящик
-в золотой пропорции.<br>
+Кахон Фибоначчи — перкуссионный ящик в золотой пропорции.<br>
 Сухой глубокий бас.<br>
 Монохорд — одна струна, сто смыслов.
-
 </div>
 
 </div>
 
 
 
-
-<div class="card music">
+<div class="card">
 
 <img class="icon" src="images/music.svg">
 
 <h2>Играем музыку</h2>
 
 <div class="text">
-
 Каждая встреча заканчивается общей игрой.<br>
 Без нот, без правил.<br>
-Кто-то задаёт ритм на кахоне,
-кто-то ласкает монохорд,
-кто-то просто сидит.<br>
-Записываем фрагмент — он уходит в закрытый чат
-«заварили-запилили».
-
+Кто-то задаёт ритм, кто-то играет, кто-то просто сидит.<br>
+Запись уходит в закрытый чат «заварили-запилили».
 </div>
 
 </div>
 
-
-
 </div>
-
-
-
 
 <script>
 
-
 const cards=document.querySelectorAll(".card");
 
+function open(card){
+
+cards.forEach(c=>c.classList.remove("active"));
+card.classList.add("active");
+
+gsap.fromTo(card,
+{scale:0.98},
+{scale:1,duration:.8,ease:"power3.out"});
+
+}
 
 cards.forEach(card=>{
 
+card.addEventListener("mouseenter",()=>{
+
+if(window.innerWidth>768){
+open(card);
+}
+
+});
 
 card.addEventListener("click",()=>{
-
-
-if(window.innerWidth<=768){
-
-
-cards.forEach(c=>{
-
-if(c!==card){
-
-c.classList.remove("open");
-
-}
+open(card);
+});
 
 });
 
-
-card.classList.toggle("open");
-
-
-}
-
-
-});
-
-
-});
-
-
+open(cards[0]);
 
 </script>
 
-
-
 </body>
-
 </html>
