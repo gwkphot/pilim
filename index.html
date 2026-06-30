@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ru">
 
 <head>
@@ -25,9 +25,10 @@ width:100%;
 height:100%;
 overflow:hidden;
 background:#fff;
-color:#111;
 font-family:Inter,sans-serif;
+color:#111;
 }
+
 
 /* ======================
 DESKTOP
@@ -38,6 +39,7 @@ display:flex;
 width:100%;
 height:100vh;
 }
+
 
 .card{
 
@@ -62,284 +64,516 @@ transition:flex .9s cubic-bezier(.2,.8,.2,1);
 
 }
 
+
 .card:last-child{
 border-right:none;
 }
+
 
 .card.active{
 flex:3;
 }
 
+
 /* ======================
-ICON (единая линия сверху)
+ICON
 ====================== */
+
 
 .icon{
+
 width:90px;
 height:90px;
+
 filter:brightness(0);
+
 margin-bottom:25px;
+
 flex-shrink:0;
+
 }
+
+
 
 /* ======================
-CENTER CONTENT BLOCK
+CONTENT CENTER FIX
 ====================== */
 
+
 .content{
+
 display:flex;
 flex-direction:column;
-justify-content:center;
-height:calc(100% - 140px);
+
+justify-content:flex-start;
+
+width:100%;
+
+position:absolute;
+
+top:50%;
+
+transform:translateY(-20%);
+
+left:50px;
+
 }
+
+
 
 /* ======================
 TITLE
 ====================== */
 
+
 h2{
 
 font-family:"Montserrat";
+
 font-size:30px;
+
 font-weight:800;
 
 line-height:1.05;
+
 margin-bottom:20px;
 
+
 opacity:0;
-transform:translateY(20px);
-transition:.45s ease;
+
+transform:translateY(10px);
+
+transition:
+opacity .35s ease,
+transform .35s ease;
+
 
 text-align:left;
 
 }
 
+
 .card.active h2{
+
 opacity:1;
+
 transform:translateY(0);
+
 }
+
+
 
 /* ======================
 TEXT
 ====================== */
 
+
 .text{
 
 font-size:18px;
+
 line-height:1.5;
-
-opacity:0;
-transform:translateY(20px);
-
-transition:.55s ease;
 
 max-width:700px;
 
 text-align:left;
 
+
+opacity:0;
+
+transition:opacity .25s ease .15s;
+
+
+position:relative;
+
 }
 
+
+
 .card.active .text{
+
 opacity:1;
-transform:translateY(0);
+
 }
+
+
+
 
 /* ======================
 MOBILE
 ====================== */
 
+
 @media(max-width:768px){
+
 
 html,body{
 overflow:auto;
 }
 
+
+
 .wrapper{
+
 flex-direction:column;
+
 height:auto;
+
 }
+
+
 
 .card{
 
+
 flex:none;
+
 height:120px;
+
 
 padding:20px;
 
+
 border-right:none;
+
 border-bottom:1px solid #111;
 
-align-items:flex-start;
+
+display:flex;
+
+flex-direction:row;
+
+
+align-items:center;
+
 justify-content:flex-start;
 
-transition:height .7s cubic-bezier(.2,.8,.2,1);
+
+gap:15px;
+
+
+transition:
+height .7s cubic-bezier(.2,.8,.2,1);
+
 
 }
+
+
 
 .card.active{
+
 height:420px;
+
 }
+
+
+
+/* icon */
 
 .icon{
+
 width:50px;
+
 height:50px;
-margin-bottom:10px;
+
+margin-bottom:0;
+
 }
+
+
+
+
+/* mobile content reset */
 
 .content{
-height:auto;
+
+position:relative;
+
+top:auto;
+
+left:auto;
+
+transform:none;
+
+margin-top:20px;
+
 }
+
+
+
+/* title */
+
 
 h2{
+
 font-size:18px;
+
 opacity:0;
+
 margin-bottom:10px;
+
 }
+
+
 
 .card.active h2{
+
 opacity:1;
+
 }
+
+
+
+/* text */
+
 
 .text{
+
 font-size:14px;
+
 max-width:100%;
+
 opacity:0;
-transform:none;
+
 }
+
+
 
 .card.active .text{
+
 opacity:1;
-}
 
 }
+
+
+
+}
+
 
 </style>
 
 </head>
 
+
 <body>
+
 
 <div class="wrapper">
 
+
+
 <div class="card">
+
 
 <img class="icon" src="images/tea.svg">
 
+
 <div class="content">
+
 
 <h2>Пьём чай</h2>
 
+
 <div class="text">
+
 Пауза — настройка слуха.<br>
+
 Завариваем, разливаем, молчим.<br>
+
 Слушаем воду, стук пиал, дыхание залива.<br>
+
 Чаем занимается Хранитель пауз.<br>
+
 Посуда — ручная работа, можно заполучить.
-</div>
 
 </div>
 
+
 </div>
+
+
+</div>
+
+
 
 
 
 <div class="card">
+
 
 <img class="icon" src="images/wood.svg">
 
+
 <div class="content">
+
 
 <h2>Делаем классные деревяшки</h2>
 
+
 <div class="text">
+
 Чайные принадлежности и другая красота из дерева разных пород.<br>
+
 Масло вместо лака.<br>
+
 Слышишь? — это дерево дышит.
-</div>
 
 </div>
 
+
 </div>
+
+
+</div>
+
+
 
 
 
 <div class="card">
+
 
 <img class="icon" src="images/instruments.svg">
 
+
 <div class="content">
+
 
 <h2>Строим музыкальные инструменты</h2>
 
+
 <div class="text">
+
 Гравитон — гравитационный аккорд.<br>
+
 Гул планетарного масштаба.<br>
+
 Кахон Фибоначчи — перкуссионный ящик в золотой пропорции.<br>
+
 Сухой глубокий бас.<br>
+
 Монохорд — одна струна, сто смыслов.
-</div>
 
 </div>
 
+
 </div>
+
+
+</div>
+
+
 
 
 
 <div class="card">
 
+
 <img class="icon" src="images/music.svg">
+
 
 <div class="content">
 
+
 <h2>Играем музыку</h2>
 
+
 <div class="text">
+
 Каждая встреча заканчивается общей игрой.<br>
+
 Без нот, без правил.<br>
+
 Кто-то задаёт ритм, кто-то играет, кто-то просто сидит.<br>
+
 Запись уходит в закрытый чат «заварили-запилили».
-</div>
 
 </div>
 
-</div>
 
 </div>
+
+
+</div>
+
+
+</div>
+
+
+
 
 <script>
 
+
 const cards=document.querySelectorAll(".card");
+
+
 
 function open(card){
 
+
 cards.forEach(c=>c.classList.remove("active"));
+
+
 card.classList.add("active");
 
+
+
 gsap.fromTo(card,
-{scale:0.98},
-{scale:1,duration:.8,ease:"power3.out"});
+
+{
+scale:0.98
+},
+
+{
+scale:1,
+duration:.8,
+ease:"power3.out"
+}
+
+);
+
 
 }
+
+
 
 cards.forEach(card=>{
 
+
 card.addEventListener("mouseenter",()=>{
 
+
 if(window.innerWidth>768){
+
 open(card);
+
 }
 
+
 });
+
+
 
 card.addEventListener("click",()=>{
+
+
 open(card);
-});
+
 
 });
+
+
+});
+
+
 
 open(cards[0]);
 
+
 </script>
 
+
 </body>
+
 </html>
