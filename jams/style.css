@@ -1,0 +1,417 @@
+/* =========================================================
+FONTS
+========================================================= */
+
+@font-face{
+    font-family:'Inter';
+    src:url('../fonts/Inter-Regular.woff2') format('woff2');
+    font-weight:400;
+    font-style:normal;
+    font-display:swap;
+}
+
+@font-face{
+    font-family:'Inter';
+    src:url('../fonts/Inter-Medium.woff2') format('woff2');
+    font-weight:500;
+    font-style:normal;
+    font-display:swap;
+}
+
+@font-face{
+    font-family:'Inter';
+    src:url('../fonts/Inter-SemiBold.woff2') format('woff2');
+    font-weight:600;
+    font-style:normal;
+    font-display:swap;
+}
+
+
+/* =========================================================
+RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    margin:0;
+    padding:0;
+    background:#D9D9D9;
+}
+
+body{
+    margin:0;
+    padding:0;
+
+    font-family:'Inter',sans-serif;
+
+    background:#D9D9D9;
+    color:#333333;
+
+    overflow-x:hidden;
+}
+
+
+/* =========================================================
+FIXED LOGO
+========================================================= */
+
+.logo-fixed{
+    position:fixed;
+    top:35px;
+    right:40px;
+    z-index:9999;
+    width:60px;
+    height:60px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid #111;
+    background:transparent;
+
+    transition:.3s ease;
+    overflow:hidden;
+}
+
+.logo-fixed img{
+    width:75%;
+    height:75%;
+    object-fit:contain;
+    transition:.3s ease;
+}
+
+.logo-fixed:hover{
+    background:#111;
+}
+
+.logo-fixed:hover img{
+    filter:invert(1);
+}
+
+
+/* =========================================================
+FIXED LOGO — GRAY STATE
+========================================================= */
+
+.logo-fixed.dark{
+    border-color:#D9D9D9;
+}
+
+.logo-fixed.dark img{
+    content:url("../images/logo-gray.svg");
+}
+
+
+/* =========================================================
+DARK LOGO — HOVER
+========================================================= */
+
+.logo-fixed.dark:hover{
+    background:#98E915;
+    border-color:#111;
+}
+
+.logo-fixed.dark:hover img{
+    content:url("../images/logo.svg");
+    filter:none;
+}
+
+
+/* =========================================================
+FIXED LOGO — MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+    .logo-fixed{
+        width:44px;
+        height:44px;
+        top:20px;
+        right:20px;
+    }
+
+}
+
+
+/* =========================================================
+MAIN STACK
+========================================================= */
+
+.main-stack{
+    position:relative;
+
+    width:100%;
+
+    overflow:visible;
+}
+
+
+/* =========================================================
+STACK CARD
+========================================================= */
+
+.stack-card{
+    position:sticky;
+    top:0;
+
+    width:100%;
+    min-height:100vh;
+
+    overflow:hidden;
+}
+
+
+/* =========================================================
+MANIFEST
+========================================================= */
+
+.page-manifest{
+    z-index:1;
+
+    background:#D9D9D9;
+
+    display:flex;
+    align-items:flex-start;
+    justify-content:flex-start;
+
+    padding:48px;
+}
+
+.page-manifest-content{
+    width:100%;
+}
+
+.page-manifest h1{
+    margin:0;
+
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+
+    font-size:clamp(52px,6vw,110px);
+    line-height:.92;
+    letter-spacing:-.055em;
+
+    color:#333333;
+}
+
+
+/* =========================================================
+MANIFEST LINES
+========================================================= */
+
+.page-manifest .line{
+    display:block;
+}
+
+.manifest-mobile{
+    display:none;
+}
+
+.small-gap{
+    margin-right:.15em;
+}
+
+
+/* =========================================================
+IMAGE
+========================================================= */
+
+.page-image{
+    z-index:2;
+
+    background:#000000;
+
+    padding:0;
+}
+
+.page-image picture{
+    display:block;
+
+    width:100%;
+    height:100%;
+}
+
+.page-image img{
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+
+/* =========================================================
+DESCRIPTION
+========================================================= */
+
+.page-description{
+    z-index:3;
+
+    background:#D9D9D9;
+
+    display:flex;
+    align-items:flex-start;
+    justify-content:flex-start;
+
+    padding:48px;
+}
+
+.page-description p{
+    margin:0;
+
+    width:78%;
+    max-width:1100px;
+
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+
+    font-size:clamp(28px,2.4vw,46px);
+    line-height:1.02;
+    letter-spacing:-.04em;
+
+    color:#333333;
+}
+
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media(max-width:1024px){
+
+    .logo-fixed{
+        top:18px;
+        left:18px;
+        width:135px;
+    }
+
+    .page-manifest{
+        padding:40px;
+    }
+
+    .page-manifest h1{
+        font-size:clamp(46px,7vw,80px);
+    }
+
+    .page-description{
+        padding:40px;
+    }
+
+    .page-description p{
+        width:82%;
+        font-size:clamp(26px,3.2vw,38px);
+        line-height:1.02;
+    }
+
+}
+
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+    .logo-fixed{
+        top:14px;
+        left:14px;
+        width:115px;
+    }
+
+    .stack-card{
+        min-height:100vh;
+    }
+
+
+    /* -----------------------------------------------------
+    MANIFEST
+    ----------------------------------------------------- */
+
+    .page-manifest{
+        padding:28px 14px;
+
+        align-items:flex-start;
+    }
+
+    .manifest-desktop{
+        display:none;
+    }
+
+    .manifest-mobile{
+        display:block;
+    }
+
+    .page-manifest h1{
+        font-size:clamp(48px,13vw,76px);
+        line-height:.88;
+        letter-spacing:-.06em;
+    }
+
+
+    /* -----------------------------------------------------
+    IMAGE
+    ----------------------------------------------------- */
+
+    .page-image img{
+        object-fit:cover;
+    }
+
+
+    /* -----------------------------------------------------
+    DESCRIPTION
+    ----------------------------------------------------- */
+
+    .page-description{
+        padding:28px 14px;
+
+        align-items:flex-start;
+    }
+
+    .page-description p{
+        width:100%;
+        max-width:none;
+
+        font-size:24px;
+        line-height:1.08;
+        letter-spacing:-.035em;
+    }
+
+}
+
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+    .logo-fixed{
+        top:12px;
+        left:12px;
+        width:105px;
+    }
+
+    .page-manifest{
+        padding:24px 14px;
+    }
+
+    .page-manifest h1{
+        font-size:48px;
+        line-height:.86;
+    }
+
+    .page-description{
+        padding:24px 14px;
+    }
+
+    .page-description p{
+        font-size:21px;
+        line-height:1.06;
+    }
+
+}
