@@ -1366,7 +1366,6 @@ GALLERY — MOBILE
 
 }
 
-
 /* =========================================================
 CONTACT BLOCK
 ========================================================= */
@@ -1431,12 +1430,12 @@ SLOGAN
 
     gap:.28em;
 
-    margin-top:60px;
+    margin-top:38px;
 
     font-family:'Inter',sans-serif;
     font-weight:700;
 
-    font-size:clamp(28px,2.5vw,48px);
+    font-size:clamp(24px,2.1vw,40px);
     line-height:1;
     letter-spacing:-.055em;
 
@@ -1453,6 +1452,38 @@ SLOGAN
 
 
 /* =========================================================
+CONTACT SCHEDULE TEXT
+========================================================= */
+
+.contact-schedule{
+    width:27%;
+
+    margin-top:auto;
+    margin-bottom:24px;
+}
+
+.contact-schedule p{
+    margin:0;
+
+    font-family:'Inter-Regular',sans-serif;
+    font-weight:400;
+
+    font-size:18px;
+    line-height:1.02;
+    letter-spacing:-.025em;
+
+    color:#a8a8a8;
+}
+
+.contact-schedule strong{
+    font-family:'Inter-Bold',sans-serif;
+    font-weight:700;
+
+    color:#bdbdbd;
+}
+
+
+/* =========================================================
 CONTACT BOTTOM
 ========================================================= */
 
@@ -1461,7 +1492,7 @@ CONTACT BOTTOM
     justify-content:space-between;
     align-items:flex-end;
 
-    margin-top:auto;
+    margin-top:0;
 
     background:#292929;
 }
@@ -1632,6 +1663,12 @@ CONTACT — TABLET
         font-size:clamp(26px,3vw,42px);
     }
 
+    .contact-schedule{
+        width:45%;
+        margin-top:40px;
+        margin-bottom:24px;
+    }
+
 }
 
 
@@ -1642,7 +1679,7 @@ CONTACT — MOBILE
 @media(max-width:768px){
 
     .contact-block{
-        padding:0;
+        padding:0 16px 24px;
         min-height:100svh;
     }
 
@@ -1653,11 +1690,11 @@ CONTACT — MOBILE
         justify-content:center;
         align-items:flex-start;
 
-        padding:8px 6px 0;
+        padding:20px 6px 0;
 
         transform:none;
 
-        font-size:clamp(42px,10.8vw,64px);
+        font-size:clamp(40px,9.8vw,58px);
         line-height:.8;
         letter-spacing:-.075em;
 
@@ -1674,16 +1711,47 @@ CONTACT — MOBILE
         justify-content:center;
         align-items:center;
 
-        gap:.18em;
+        gap:.16em;
 
-        margin-top:30px;
+        margin-top:24px;
 
-        font-size:clamp(18px,5.5vw,28px);
+        font-size:clamp(16px,4.8vw,24px);
         line-height:1;
         letter-spacing:-.055em;
 
         white-space:nowrap;
     }
+
+
+    /* =====================================================
+    SCHEDULE — MOBILE
+    ===================================================== */
+
+    .contact-schedule{
+        display:block;
+
+        width:100%;
+
+        margin-top:auto;
+        margin-bottom:26px;
+    }
+
+    .contact-schedule p{
+        font-family:'Inter-Regular',sans-serif;
+        font-size:15px;
+        line-height:1.04;
+        letter-spacing:-.02em;
+
+        color:#a8a8a8;
+    }
+
+    .contact-schedule strong{
+        font-family:'Inter-Bold',sans-serif;
+        font-weight:700;
+
+        color:#bdbdbd;
+    }
+
 
     .slogan-line .light{
         color:#D9D9D9;
@@ -1697,6 +1765,11 @@ CONTACT — MOBILE
         filter:none !important;
     }
 
+
+    /* =====================================================
+    CONTACT BOTTOM — MOBILE
+    ===================================================== */
+
     .contact-bottom{
         width:100%;
 
@@ -1704,26 +1777,32 @@ CONTACT — MOBILE
         flex-direction:column;
         align-items:flex-start;
 
-        gap:35px;
+        gap:28px;
 
-        margin-top:auto;
+        margin-top:0;
 
-        padding:0 16px 24px;
+        padding:0;
 
         box-sizing:border-box;
     }
 
     .contact-left{
-        width:calc(100% - 80px);
-        gap:28px;
+        width:100%;
+
+        display:flex;
+        flex-direction:column;
+
+        gap:24px;
     }
 
     .contact-socials{
-        gap:12px;
+        gap:8px;
     }
 
     .contact-socials a{
-        font-size:32px;
+        font-size:26px;
+        line-height:.95;
+        letter-spacing:-.045em;
     }
 
     .contact-input{
@@ -1733,37 +1812,37 @@ CONTACT — MOBILE
 
     .contact-input input{
         width:100%;
-        font-size:20px;
+        font-size:18px;
+        padding:12px 0;
     }
 
     .contact-input button{
         width:42px;
-        font-size:36px;
+        font-size:34px;
     }
 
     .contact-right{
-        width:calc(100% - 80px);
+        width:100%;
         text-align:left;
     }
 
     .contact-right span{
         width:100%;
-        font-size:15px;
+        font-size:14px;
         line-height:1;
-        margin-bottom:10px;
+        margin-bottom:8px;
         white-space:nowrap;
     }
 
     .contact-right h2{
         width:100%;
-        font-size:30px;
+        font-size:28px;
         line-height:.9;
         letter-spacing:-.06em;
         white-space:nowrap;
     }
 
 }
-
 
 /* =========================================================
 PICTURE RESPONSIVE IMAGES
